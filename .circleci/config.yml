@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/circle-ci-test
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: pwd
+      - run: cat package.json
+      - run: ls
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+      # - run: sudo npm install -g serverless
+
+      # - run:
+      #     name: Update npm
+      #     command: 'sudo npm install -g npm@latest'
+      - run: sudo npm install -g
+      # - run: npm test
+      # - run: node --version
+      - run: sudo serverless --version
